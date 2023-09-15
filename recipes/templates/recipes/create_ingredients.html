@@ -1,0 +1,33 @@
+{%extends 'base.html' %}
+{% block title %}
+{{recipe_object.title}} - Recipes for Life.
+{% endblock title %}
+
+{% block content %}
+    <header>
+        <nav>
+            <a class="color-white" href="{%url 'recipe_list'%}">Main page</a>
+        </nav>
+    </header>
+    <main>
+        <form method="post">
+            {% csrf_token %}
+            {{ formset.management_form }}
+            <table>
+                <tr>
+                    <th> Amount </th>
+                    <th> Food Item </th>
+                </tr>
+                {% for form in formset %}
+                <tr>
+                    <td>{{form.amount}}</td>
+                    <td>{{form.food_item}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <button>Save Ingredients</button>
+        </form>
+    </main>
+{% endblock content %}
+{% load static %}
+<!DOCTYPE html>

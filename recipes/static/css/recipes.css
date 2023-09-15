@@ -1,0 +1,142 @@
+/* RECIPES.CSS */
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr 50px;
+    grid-template-areas:
+        "header"
+        "main"
+        "footer"
+        ;
+        height: 100vh
+}
+
+.container-flexbox1 {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.color-white {
+    color: white
+}
+
+body {
+    font-family: sans-serif;
+    background-color: white;
+    margin: 0px;
+    padding: 0px;
+    }
+
+main {
+    padding: 16px;
+    }
+
+
+footer {
+    padding: 24px 10px 24px 10px;
+    position: static;
+    z-index: 1;
+    grid-area: footer;
+    background-color:grey
+    }
+
+img {
+    height: 200px;
+    }
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    color: black 1px;
+    padding: 15px
+    }
+a {
+    text-decoration: None;
+    color: black
+}
+a:hover {
+    color: purple;
+
+    }
+
+header {
+    min-height: 20px;
+    grid-area: header;
+    background-color: black;
+    z-index: 1;
+    font-weight: bold;
+    border-bottom: .1rem solid purple
+}
+
+title {
+    text-emphasis: bold;
+}
+
+h1 {
+    color: black
+
+}
+tr:nth-child(even) {
+    background-color: lightgrey;
+}
+
+.rcorners {
+
+    border-radius: 25px;
+    box-shadow:5px 5px 10px #888888;
+    width: 500px;
+    min-height: 120px;
+    max-height: auto;
+    margin: 10px;
+    padding: 3px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.center-pic {
+    text-align: center;
+}
+
+.bolded-blue {
+    font-weight: bold;
+    color: blue
+}
+.doubleboarder {
+    p.double {border-style: double;}
+}
+
+.squarebox {
+    display:flex;
+    flex-direction: column;
+    box-shadow:5px 5px 10px #888888;
+    width: 500px;
+    min-height: 120px;
+    max-height: auto;
+    margin: 10px;
+    padding: 3px;
+}
+
+.leftboarder {
+    padding-left: 15px
+}
+
+.smaller-box {
+    width: 500px;
+    min-height: auto;
+    max-height: auto;
+    margin: 10px;
+    padding: 3px;
+}
+
+.stretch {
+    width: auto;
+    min-height: auto;
+    max-height: auto;
+    margin: 10px;
+    padding: 3px;
+}

@@ -1,0 +1,67 @@
+<!-- DETAIL.HTML -->
+{%extends 'base.html' %}
+{% load custom_filters %}
+{% block title %}
+{{recipe_object.title}} - Recipes for Life.
+{% endblock title %}
+
+{% block content %}
+<header>
+    <nav>
+        <a class="color-white" href="{%url 'recipe_list'%}">Main page</a>
+        {% if user == recipe_object.author %}
+        <a class="color-white" href="{%url 'edit_recipe' recipe_object.id %}">edit</a>
+        {%endif%}
+    </nav>
+</header>
+<main>
+    <div class="rcorners">
+    <h1> {{recipe_object.title}}</h1>
+    <img src="{{recipe_object.picture}}"/>
+    <div class="leftboarder">Rating: {{ recipe_object.average_rating|stars }} {{recipe_object.ratings.count}} reviews</div>
+    </div>
+        <p class ="smaller-box">{{recipe_object.description}}</p>
+    <h2>Ingredients</h2>
+        <table class ="ingredients-table">
+            <thead>
+                <tr>
+                    <th>Amount</th>
+                    <th>Food items</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ingredient in recipe_object.ingredients.all %}
+                    <tr>
+                        <td> {{ ingredient.amount }} </td>
+                        <td> {{ ingredient.food_item }} </td>
+                    </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    <h2> Steps </h2>
+        <ol>
+            {% for step in recipe_object.steps.all %}
+            <li>{{ step.instruction }} </li>
+            {% endfor %}
+        </ol>
+</div>
+<h2>Reviews</h2>
+<div>
+<a class="bolded-blue" href="{% url 'submit_review' recipe_object.id %}"> Add Review </a>
+</div>
+<ul>
+    {% for rating in recipe_object.ratings.all %}
+        <div  class="squarebox">
+            <p>Rating: {{ rating.score|stars }}</p>
+            <p>{{ rating.review }}</p>
+            <p>-{{ rating.user }}</p>
+    {% empty %}
+        <p>No reviews yet.</p>
+    </div>
+    {% endfor %}
+</ul>
+</div>
+
+
+</main>
+{%endblock content%}

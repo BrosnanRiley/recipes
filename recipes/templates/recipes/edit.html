@@ -1,0 +1,19 @@
+{%extends 'base.html' %}
+{% block title %}
+Edit {{recipe_object.title}} - Recipes for Life.
+{% endblock title %}
+{% block content %}
+    <header>
+        <nav>
+            <a class="color-white" href="{%url 'recipe_list'%}">Main page</a>
+        </nav>
+    </header>
+    <main>
+        <h1> Edit {{ recipe_object.title}}</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{recipe_form.as_p}}
+            <button>Save</button>
+        </form>
+    </main>
+{% endblock content %}
